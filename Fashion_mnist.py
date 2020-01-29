@@ -59,3 +59,13 @@ model.fit(train_images,train_labels,epochs=5)#you can tweak the number of epochs
 test_loss,test_acc = model.evaluate(test_images,test_labels)
 print("Test Acc:",test_acc)
 
+prediction = model.predict(test_images)#you get the predictions your model predicted on your test dataset
+
+#for simple understanding a simple graph showing the predicted vs the actual item in our dataset
+for i in range(5):
+    plt.grid(False)
+    plt.imshow(test_images[i])
+    plt.xlabel("Actual:"+ class_names[test_labels[i]])
+    plt.title("Prediction:"+class_names[np.argmax(prediction[i])])
+    plt.show()
+
